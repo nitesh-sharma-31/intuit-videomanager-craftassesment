@@ -1,0 +1,173 @@
+<Window x:Class="VideoManager.View.Views.VideoDetailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:converters="clr-namespace:VideoManager.View.Converters"
+        Title="Video Details" Height="600" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Background="#F5F5F5">
+    
+    <Window.Resources>
+        <converters:FileSizeConverter x:Key="FileSizeConverter"/>
+        
+        <Style x:Key="ModernButton" TargetType="Button">
+            <Setter Property="Background" Value="#2196F3"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="15,8"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="4"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#1976D2"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock Text="Video Details" FontSize="24" FontWeight="Bold" Foreground="#212121"/>
+            <TextBlock x:Name="TitleTextBlock" FontSize="18" Foreground="#757575" Margin="0,5,0,0"/>
+        </StackPanel>
+
+        <!-- Content -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <!-- Basic Info -->
+                <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,10">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Grid.Column="0" Text="File Name:" FontWeight="Bold" Margin="0,5"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" x:Name="FileNameTextBlock" Margin="0,5" TextWrapping="Wrap"/>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Description:" FontWeight="Bold" Margin="0,5"/>
+                        <TextBlock Grid.Row="1" Grid.Column="1" x:Name="DescriptionTextBlock" Margin="0,5" TextWrapping="Wrap"/>
+
+                        <TextBlock Grid.Row="2" Grid.Column="0" Text="File Size:" FontWeight="Bold" Margin="0,5"/>
+                        <TextBlock Grid.Row="2" Grid.Column="1" x:Name="FileSizeTextBlock" Margin="0,5"/>
+
+                        <TextBlock Grid.Row="3" Grid.Column="0" Text="Duration:" FontWeight="Bold" Margin="0,5"/>
+                        <TextBlock Grid.Row="3" Grid.Column="1" x:Name="DurationTextBlock" Margin="0,5"/>
+
+                        <TextBlock Grid.Row="4" Grid.Column="0" Text="Format:" FontWeight="Bold" Margin="0,5"/>
+                        <TextBlock Grid.Row="4" Grid.Column="1" x:Name="FormatTextBlock" Margin="0,5"/>
+
+                        <TextBlock Grid.Row="5" Grid.Column="0" Text="Created:" FontWeight="Bold" Margin="0,5"/>
+                        <TextBlock Grid.Row="5" Grid.Column="1" x:Name="CreatedTextBlock" Margin="0,5"/>
+
+                        <TextBlock Grid.Row="6" Grid.Column="0" Text="Created By:" FontWeight="Bold" Margin="0,5"/>
+                        <TextBlock Grid.Row="6" Grid.Column="1" x:Name="CreatedByTextBlock" Margin="0,5"/>
+                    </Grid>
+                </Border>
+
+                <!-- Metadata -->
+                <Border Background="White" CornerRadius="8" Padding="20" Margin="0,0,0,10">
+                    <StackPanel>
+                        <TextBlock Text="Video Metadata" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Resolution:" FontWeight="Bold" Margin="0,5"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" x:Name="ResolutionTextBlock" Margin="0,5"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Codec:" FontWeight="Bold" Margin="0,5"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="CodecTextBlock" Margin="0,5"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Bitrate:" FontWeight="Bold" Margin="0,5"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" x:Name="BitrateTextBlock" Margin="0,5"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="View Count:" FontWeight="Bold" Margin="0,5"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" x:Name="ViewCountTextBlock" Margin="0,5"/>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Tags:" FontWeight="Bold" Margin="0,5"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" x:Name="TagsTextBlock" Margin="0,5" TextWrapping="Wrap"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <!-- Versions -->
+                <Border Background="White" CornerRadius="8" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="Version History" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <ListBox x:Name="VersionsListBox" BorderThickness="0" MaxHeight="200">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BorderBrush="#E0E0E0" BorderThickness="0,0,0,1" Padding="5">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock Grid.Column="0" FontWeight="Bold" Margin="0,0,10,0">
+                                                <Run Text="v"/>
+                                                <Run Text="{Binding VersionNumber}"/>
+                                            </TextBlock>
+                                            <TextBlock Grid.Column="1" Text="{Binding ChangeDescription}" TextTrimming="CharacterEllipsis"/>
+                                            <TextBlock Grid.Column="2" Text="{Binding CreatedDate, StringFormat='{}{0:yyyy-MM-dd}'}" 
+                                                       Foreground="#757575"/>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Button Content="Upload New Version" Style="{StaticResource ModernButton}"
+                                Background="#FF9800" Click="UploadVersionButton_Click" 
+                                HorizontalAlignment="Left" Margin="0,10,0,0"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button Content="Download" Style="{StaticResource ModernButton}" 
+                    Background="#4CAF50" Click="DownloadButton_Click" Padding="30,10"/>
+            <Button Content="Close" Style="{StaticResource ModernButton}" 
+                    Background="#757575" Click="CloseButton_Click" Padding="30,10"/>
+        </StackPanel>
+    </Grid>
+</Window>
